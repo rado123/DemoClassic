@@ -5,17 +5,17 @@
  *
  * TODO - Replace this content of this view to suite the needs of your application.
  */
-Ext.define('DemoClassic.view.main.Main', {
+ Ext.define('DemoClassic.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-main',
 
     requires: [
-        'Ext.plugin.Viewport',
-        'Ext.window.MessageBox',
+    'Ext.plugin.Viewport',
+    'Ext.window.MessageBox',
 
-        'DemoClassic.view.main.MainController',
-        'DemoClassic.view.main.MainModel',
-        'DemoClassic.view.main.List'
+    'DemoClassic.view.main.MainController',
+    'DemoClassic.view.main.MainModel',
+    'DemoClassic.view.main.List'
     ],
 
     controller: 'main',
@@ -37,7 +37,7 @@ Ext.define('DemoClassic.view.main.Main', {
             },
             flex: 0
         },
-        iconCls: 'fa-th-list'
+        iconCls: 'x-fa fa-th-list'
     },
 
     tabBar: {
@@ -74,30 +74,12 @@ Ext.define('DemoClassic.view.main.Main', {
         }
     },
 
-    items: [{
-        title: 'Home',
-        iconCls: 'fa-home',
-        // The following grid shares a store with the classic version's grid as well!
+    items: [
+    {
+        title: 'Personnel',
+        iconCls: 'x-fa fa-users',
         items: [{
             xtype: 'mainlist'
         }]
-    }, {
-        title: 'Users',
-        iconCls: 'fa-user',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Groups',
-        iconCls: 'fa-users',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Settings',
-        iconCls: 'fa-cog',
-        bind: {
-            html: '{loremIpsum}'
-        }
     }]
 });
