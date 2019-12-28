@@ -17,8 +17,14 @@ Ext.define('DemoClassic.view.main.MainController', {
     },
     onAddClick: function() {
         console.log("on add click", this)
+
+
+        let win = DemoClassic.view.main.AddPerson.create({
+            modal: true,
+            centered: true,
+            floating: true,
+        });
+        console.log('win:', win)
+        win.show();
     }
-
-
-
 });

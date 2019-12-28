@@ -15,7 +15,8 @@ Ext.define('DemoClassic.view.main.Main', {
 
         'DemoClassic.view.main.MainController',
         'DemoClassic.view.main.MainModel',
-        'DemoClassic.view.main.List'
+        'DemoClassic.view.main.List',
+        'DemoClassic.view.main.AddPerson'
     ],
 
     controller: 'main',
@@ -75,10 +76,13 @@ Ext.define('DemoClassic.view.main.Main', {
     },
 
     items: [{
-        title: 'Personnel',
-        iconCls: 'x-fa fa-users',
-        items: [{
-            xtype: 'mainlist'
-        }]
-    }]
+            title: 'Personnel',
+            iconCls: 'x-fa fa-users',
+            items: [{
+                    xtype: 'mainlist'
+                }
+
+            ]
+        }
+    ]
 });

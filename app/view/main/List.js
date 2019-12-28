@@ -49,20 +49,20 @@ Ext.define('DemoClassic.view.main.List', {
             tooltip: 'Delete',
             handler: function(grid, rowIndex, colIndex) {
                 let rec = grid.getStore().getAt(rowIndex);
-//              console.log(' delete, rec:', rec, this)
+                //              console.log(' delete, rec:', rec, this)
+                // confirm
                 Ext.Msg.show({
                     title: "Delete changes?",
                     message: 'Do you want to delete ' + rec.get('fullname') + ' ?',
                     buttons: Ext.Msg.YESNO,
-//                    callback: "onConfirmDelete",
                     fn: "onConfirmDelete",
                     scope: this,
-                    record: rec     //to pass parameter into opt
+                    record: rec //to pass the parameter into opt
                 });
             }
         }],
         onConfirmDelete: function(buttonid, text, opt) {
-//          console.log('on cnf delete inside action', buttonid, text, opt)
+            //          console.log('on cnf delete inside action', buttonid, text, opt)
             if (buttonid == 'yes') {
                 opt.record.drop();
             }
