@@ -1,6 +1,3 @@
-/**
- * This view is an example list of people.
- */
 Ext.define('DemoClassic.view.main.List', {
     extend: 'Ext.grid.Panel',
     xtype: 'mainlist',
@@ -15,6 +12,10 @@ Ext.define('DemoClassic.view.main.List', {
         type: 'personnel'
     },
     autoLoad: true,
+    tbar: [{
+        text: 'Add record',
+        handler: 'onAddClick'
+    }],
 
     columns: [{
         dataIndex: 'avatar',
@@ -48,11 +49,24 @@ Ext.define('DemoClassic.view.main.List', {
             tooltip: 'Delete',
             handler: function(grid, rowIndex, colIndex) {
                 let rec = grid.getStore().getAt(rowIndex);
-                Ext.Msg.confirm('Delete changes?',
-                    'Do you want to delete ' + rec.get('fullname') + ' ?', 'onConfirmDelete', this);
+//              console.log(' delete, rec:', rec, this)
+                Ext.Msg.show({
+                    title: "Delete changes?",
+                    message: 'Do you want to delete ' + rec.get('fullname') + ' ?',
+                    buttons: Ext.Msg.YESNO,
+//                    callback: "onConfirmDelete",
+                    fn: "onConfirmDelete",
+                    scope: this,
+                    record: rec     //to pass parameter into opt
+                });
             }
-        }]
-
+        }],
+        onConfirmDelete: function(buttonid, text, opt) {
+//          console.log('on cnf delete inside action', buttonid, text, opt)
+            if (buttonid == 'yes') {
+                opt.record.drop();
+            }
+        }
     }],
 
     listeners: {
