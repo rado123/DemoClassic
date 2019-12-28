@@ -7,24 +7,20 @@ Ext.define('DemoClassic.view.main.MainController', {
 
     alias: 'controller.main',
 
-    onItemSelected: function(sender, record) {
+    onItemSelected: function(sender, record, eOpt) {
         Ext.toast({
             html: 'You clicked on ' + record.get('fullname')
         });
     },
-    onRemoveClick: function(view, recIndex, cellIndex, item, e, record) {
-        record.drop();
-    },
-    onAddClick: function() {
-        console.log("on add click", this)
-
-
-        let win = DemoClassic.view.main.AddPerson.create({
-            modal: true,
-            centered: true,
-            floating: true,
-        });
-        console.log('win:', win)
+    onAddClick: function(button) {
+        const
+            list = button.up('mainlist'),
+            win = DemoClassic.view.main.AddPerson.create({
+                list: list //passing parameter into the component
+            });
+        //        console.log("on add click", this, button)
+        //      console.log('on add list', list)
+        //    console.log('win:', win)
         win.show();
     }
 });

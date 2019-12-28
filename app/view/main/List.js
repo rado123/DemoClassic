@@ -64,7 +64,7 @@ Ext.define('DemoClassic.view.main.List', {
         onConfirmDelete: function(buttonid, text, opt) {
             //          console.log('on cnf delete inside action', buttonid, text, opt)
             if (buttonid == 'yes') {
-                opt.record.drop();
+                opt.record.drop();      // delete row
             }
         }
     }],
