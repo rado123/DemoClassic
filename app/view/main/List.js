@@ -14,12 +14,46 @@ Ext.define('DemoClassic.view.main.List', {
     store: {
         type: 'personnel'
     },
+    autoLoad: true,
 
-    columns: [
-        { text: 'Name',  dataIndex: 'name' },
-        { text: 'Email', dataIndex: 'email', flex: 1 },
-        { text: 'Phone', dataIndex: 'phone', flex: 1 }
-    ],
+    columns: [{
+        dataIndex: 'avatar',
+        renderer: function(value) {
+            return '<img src="' + value + '"  height="32" width="32"/>';
+        },
+    }, {
+        text: 'Name',
+        dataIndex: 'fullname',
+        flex: 1
+    }, {
+        xtype: 'checkcolumn',
+        text: 'Active',
+        dataIndex: 'active'
+    }, {
+        xtype: 'actioncolumn',
+        text: 'Action',
+        items: [{
+            iconCls: 'x-fa fa-dot-circle',
+            tooltip: 'Edit',
+            handler: function(grid, rowIndex, colIndex) {
+                let rec = grid.getStore().getAt(rowIndex);
+                Ext.Msg.show({
+                    title: 'Edit',
+                    message: 'Edit ' + rec.get('fullname'),
+                    buttons: []
+                });
+            }
+        }, {
+            iconCls: 'x-fa fa-minus-circle',
+            tooltip: 'Delete',
+            handler: function(grid, rowIndex, colIndex) {
+                let rec = grid.getStore().getAt(rowIndex);
+                Ext.Msg.confirm('Delete changes?',
+                    'Do you want to delete ' + rec.get('fullname') + ' ?', 'onConfirmDelete', this);
+            }
+        }]
+
+    }],
 
     listeners: {
         select: 'onItemSelected'

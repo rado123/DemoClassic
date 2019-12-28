@@ -3,16 +3,16 @@
  * and launch() the Application class.
  */
 Ext.application({
-    extend: 'DemoClassic.Application',
+	extend: 'DemoClassic.Application',
 
-    name: 'DemoClassic',
+	name: 'DemoClassic',
 
-    requires: [
-        // This will automatically load all classes in the DemoClassic namespace
-        // so that application classes do not need to require each other.
-        'DemoClassic.*'
-    ],
+	requires: [
+		// This will automatically load all classes in the DemoClassic namespace
+		// so that application classes do not need to require each other.
+		'DemoClassic.*'
+	],
 
-    // The name of the initial view to create.
-    mainView: 'DemoClassic.view.main.Main'
+	// The name of the initial view to create.
+	mainView: 'DemoClassic.view.main.Main'
 });

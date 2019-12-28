@@ -7,13 +7,24 @@ Ext.define('DemoClassic.view.main.MainController', {
 
     alias: 'controller.main',
 
-    onItemSelected: function (sender, record) {
+    onItemSelected: function(sender, record) {
         Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
     },
 
-    onConfirm: function (choice) {
+    onConfirm: function(choice) {
         if (choice === 'yes') {
             //
         }
+    },
+    onConfirmDelete: function(buttonid) {
+        if (buttonid == 'yes') {
+            console.log('on conf delete', buttonid, this);
+
+        }
+    },
+    onRemoveClick: function(view, recIndex, cellIndex, item, e, record) {
+        record.drop();
     }
+
+
 });

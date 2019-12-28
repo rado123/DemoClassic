@@ -1,4 +1,5 @@
 /build
+/rado
 bootstrap.*
 classic.json*
 modern.json*

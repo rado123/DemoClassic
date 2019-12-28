@@ -5,17 +5,17 @@
  *
  * TODO - Replace this content of this view to suite the needs of your application.
  */
- Ext.define('DemoClassic.view.main.Main', {
+Ext.define('DemoClassic.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-main',
 
     requires: [
-    'Ext.plugin.Viewport',
-    'Ext.window.MessageBox',
+        'Ext.plugin.Viewport',
+        'Ext.window.MessageBox',
 
-    'DemoClassic.view.main.MainController',
-    'DemoClassic.view.main.MainModel',
-    'DemoClassic.view.main.List'
+        'DemoClassic.view.main.MainController',
+        'DemoClassic.view.main.MainModel',
+        'DemoClassic.view.main.List'
     ],
 
     controller: 'main',
@@ -74,8 +74,7 @@
         }
     },
 
-    items: [
-    {
+    items: [{
         title: 'Personnel',
         iconCls: 'x-fa fa-users',
         items: [{
