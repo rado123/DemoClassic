@@ -1,6 +1,7 @@
 Ext.define('DemoClassic.view.main.AddPerson', {
     extend: 'Ext.window.Window',
     xtype: 'add-person',
+    controller: 'add-person',
 
     title: 'Add Person',
     width: 400,
@@ -29,34 +30,22 @@ Ext.define('DemoClassic.view.main.AddPerson', {
             },
         },
         items: [{
-            fieldLabel: 'First Name',
+            fieldLabel: 'First name',
             bind: '{person.firstName}',
             allowBlank: false
         }, {
-            fieldLabel: 'Last Name',
+            fieldLabel: 'Last name',
             bind: '{person.lastName}',
             allowBlank: false
         }],
-
-
         buttons: [{
             text: 'Add',
             formBind: true, //only enabled once the form is valid
-            handler: function() {
-                var w = this.up('add-person'),
-                    data = this.up('form').viewModel.data   //passing data from form's viewModel 
-                w.list.getStore().add({
-                    first_name: data.person.firstName,
-                    last_name: data.person.lastName
-                });
-                w.list.getView().refresh();
-                this.up('add-person').destroy();
-            }
+            handler: 'onAddClick'
+
         }, {
             text: 'Close',
-            handler: function() {
-                this.up('add-person').destroy();
-            }
+            handler: 'onCloseClick'
         }]
     }],
 });

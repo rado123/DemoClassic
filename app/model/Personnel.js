@@ -13,7 +13,9 @@ Ext.define('DemoClassic.model.Personnel', {
 	}, {
 		name: 'fullname',
 		convert: function(value, record) {
-			return record.get('first_name') + ' ' + record.get('last_name');
+			const fn = record.get('first_name'),
+				ln = record.get('last_name')
+			return (fn && ln) ? (fn + ' ' + ln) : (fn || ln || '');
 		},
 		depends: ['first_name', 'last_name']
 	}, {

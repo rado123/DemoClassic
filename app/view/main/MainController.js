@@ -18,9 +18,39 @@ Ext.define('DemoClassic.view.main.MainController', {
             win = DemoClassic.view.main.AddPerson.create({
                 list: list //passing parameter into the component
             });
-        //        console.log("on add click", this, button)
-        //      console.log('on add list', list)
-        //    console.log('win:', win)
         win.show();
+    },
+    onEditClick: function(grid, rowIndex, colIndex) {
+        // console.log(' on edit click')
+        const rec = grid.getStore().getAt(rowIndex)
+        Ext.Msg.show({
+            title: 'Edit',
+            message: 'Edit ' + rec.get('fullname'),
+            buttons: []
+        });
+    },
+    onDeleteClick: function(grid, rowIndex, colIndex) {
+        // console.log(' on delete click')
+        const rec = grid.getStore().getAt(rowIndex);
+
+        // confirm
+        Ext.Msg.show({
+            fn: 'onConfirmDelete',
+            title: 'Delete changes?',
+            message: 'Do you want to delete ' + rec.get('fullname') + ' ?',
+            scope: this,
+            record: rec, //to pass the parameter into opt
+            // confirm method defaults:
+            buttons: Ext.Msg.YESNO,
+            icon: Ext.Msg.QUESTION,
+        });
+    },
+    onConfirmDelete: function(buttonid, text, opt) {
+        // console.log('on cnf delete')
+        if (buttonid == 'yes') {
+            opt.record.drop(); // delete row
+        }
     }
+
+
 });

@@ -22,6 +22,7 @@ Ext.define('DemoClassic.view.main.List', {
         renderer: function(value) {
             return '<img src="' + value + '"  height="32" width="32"/>';
         },
+        width: 60
     }, {
         text: 'Name',
         dataIndex: 'fullname',
@@ -36,37 +37,12 @@ Ext.define('DemoClassic.view.main.List', {
         items: [{
             iconCls: 'x-fa fa-dot-circle',
             tooltip: 'Edit',
-            handler: function(grid, rowIndex, colIndex) {
-                let rec = grid.getStore().getAt(rowIndex);
-                Ext.Msg.show({
-                    title: 'Edit',
-                    message: 'Edit ' + rec.get('fullname'),
-                    buttons: []
-                });
-            }
+            handler: 'onEditClick'
         }, {
             iconCls: 'x-fa fa-minus-circle',
             tooltip: 'Delete',
-            handler: function(grid, rowIndex, colIndex) {
-                let rec = grid.getStore().getAt(rowIndex);
-                //              console.log(' delete, rec:', rec, this)
-                // confirm
-                Ext.Msg.show({
-                    title: "Delete changes?",
-                    message: 'Do you want to delete ' + rec.get('fullname') + ' ?',
-                    buttons: Ext.Msg.YESNO,
-                    fn: "onConfirmDelete",
-                    scope: this,
-                    record: rec //to pass the parameter into opt
-                });
-            }
-        }],
-        onConfirmDelete: function(buttonid, text, opt) {
-            //          console.log('on cnf delete inside action', buttonid, text, opt)
-            if (buttonid == 'yes') {
-                opt.record.drop();      // delete row
-            }
-        }
+            handler: 'onDeleteClick'
+        }]
     }],
 
     listeners: {
