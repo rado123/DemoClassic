@@ -23,11 +23,19 @@ Ext.define('DemoClassic.view.main.List', {
             return '<img src="' + value + '"  height="32" width="32"/>';
         },
         width: 60
-    }, {
+    }, 
+    {
         text: 'Name',
         dataIndex: 'fullname',
         flex: 1
-    }, {
+    }, 
+{
+        text: 'First Name',
+        dataIndex: 'first_name',
+        flex: 1
+    }, 
+
+    {
         xtype: 'checkcolumn',
         text: 'Active',
         dataIndex: 'active'
