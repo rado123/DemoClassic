@@ -15,7 +15,7 @@ Example for Linux OS:
 
 download this app
 
-`git clone git@github.com:rado123/DemoClassic.git`
+`git clone git@github.com:rado123/DemoClassic`
 
 ## Running app
 
